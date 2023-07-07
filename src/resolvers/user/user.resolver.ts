@@ -1,8 +1,10 @@
-import { UserRegisterSchema } from "../../schemas/allSchema/user.schema";
+import { UserRegisterSchema } from "../../schemas/allSchema/userschema/user.schema";
 import { UserService } from "../../service/user.service";
 import { Arg, Mutation, Query, Resolver, UseMiddleware } from "type-graphql";
-import { RegisterInput } from "../../validators/user.validator";
+import { RegisterInput } from "../../validators/uservalidor/user.validator";
+import RequestValidator from "../../middlewares/requestValidation.middleware";
 // import { UserService } from '../../service/user.service';
+import { validate } from 'class-validator';
 
 
 @Resolver()
@@ -10,17 +12,24 @@ export class userReolver {
 
     constructor(private readonly userService = new UserService) { };
 
+
+
     @Mutation(() => UserRegisterSchema)
+    @UseMiddleware(RequestValidator.validate(RegisterInput))
     async createUser(@Arg('data') data: RegisterInput): Promise<any> {
         console.log('hahah', data)
         return await this.userService.create(data);
 
     }
 
-    @Query(() => String)
-    hello() {
-        return 'Hello User';
+    @Query(() => [UserRegisterSchema])
+    async getAllUser(): Promise<any> {
+
+        return await this.userService.getAll();
+
     }
+
+
 
 }
 

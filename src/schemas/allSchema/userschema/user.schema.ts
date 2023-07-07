@@ -1,5 +1,5 @@
-import { BaseSchema } from "../Base/base.schema";
-import { GENDER } from "../../constants/enum";
+import { BaseSchema } from "../../Base/base.schema";
+import { Gender } from "../../../constants/enum";
 import { Field, ObjectType, } from "type-graphql";
 
 
@@ -9,8 +9,8 @@ export class UserRegisterSchema extends BaseSchema {
     @Field()
     email: string
 
-    @Field()
-    password: string
+    // @Field({ nullable: true ,})
+    // password: string
 
     @Field()
     firstName: string
@@ -21,8 +21,8 @@ export class UserRegisterSchema extends BaseSchema {
     @Field()
     lastName: string
 
-    @Field(() => GENDER)
-    gender: GENDER
+    @Field(() => Gender)
+    gender: Gender
 
 
 }

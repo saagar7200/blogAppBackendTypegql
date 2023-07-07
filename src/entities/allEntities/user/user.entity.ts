@@ -1,12 +1,11 @@
-import { GENDER } from "../constants/enum";
+import { Base } from "../../../entities/base/base.entity";
+import { Gender } from "../../../constants/enum";
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({
     name: 'user'
 })
-export class UserEntity extends BaseEntity {
-    @PrimaryGeneratedColumn('increment')
-    id: string
+export class UserEntity extends Base {
 
     @Column({ name: "email", unique: true })
     email: string
@@ -36,9 +35,9 @@ export class UserEntity extends BaseEntity {
     @Column({
         type: 'enum',
         name: "gender",
-        default: GENDER.MALE,
-        enum: GENDER
+        default: Gender.MALE,
+        enum: Gender
     })
-    gender: GENDER
+    gender: Gender
 
 }

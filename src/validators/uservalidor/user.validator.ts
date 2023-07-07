@@ -1,5 +1,5 @@
 import { IsEmail, IsEnum, IsNotEmpty, IsOptional, IsString, } from "class-validator";
-import { GENDER } from "../constants/enum";
+import { Gender } from "../../constants/enum";
 import { Field, InputType } from "type-graphql";
 
 
@@ -31,9 +31,11 @@ export class RegisterInput {
     @IsString()
     lastName: string
 
-    @Field()
+    @Field(() => Gender)
     @IsNotEmpty()
-    @IsEnum(GENDER)
-    gender: GENDER
+    @IsEnum(Gender)
+    gender: Gender
+
+
 
 }

@@ -1,5 +1,5 @@
 import { StatusCodes } from "http-status-codes";
-import { STATUS } from "../../constant/message.constant";
+import { STATUS } from "../../constants/message.constant";
 
 class AppError extends Error {
   statusCode: number;

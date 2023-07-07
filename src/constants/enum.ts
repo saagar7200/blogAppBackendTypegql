@@ -1,4 +1,4 @@
-export enum GENDER {
+export enum Gender {
     MALE = "MALE",
     FEMALE = 'FEMALE',
     OTHERS = 'OTHERS'
@@ -7,9 +7,9 @@ export enum GENDER {
 
 import { registerEnumType } from "type-graphql";
 
-registerEnumType(GENDER, {
-    name: 'GENDER',
-    description: 'gender enum'
+registerEnumType(Gender, {
+    name: 'Gender',
+    description: 'Gender'
 })
 
 export enum Environment {
