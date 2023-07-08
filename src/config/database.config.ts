@@ -12,7 +12,7 @@ const dataSource = new DataSource({
     database: DotenvConfiguration.DATABASE_NAME,
     entities: [`${__dirname}/../entities/**/*.entity{.ts,.js}`],
     synchronize: true,
-    dropSchema: true,
+    // dropSchema: true,
     logging: true
 })
 
